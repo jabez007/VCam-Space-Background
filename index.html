@@ -1,82 +1,91 @@
-<html class="" lang="en"><head>
-<meta charset="UTF-8">
-<title>Twinkling Stars</title>
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.min.css">
-<style>
-    @keyframes move-background {
-  from {
-    -webkit-transform: translate3d(0px, 0px, 0px);
-  }
-  to {
-    -webkit-transform: translate3d(1000px, 0px, 0px);
-  }
-}
-@-webkit-keyframes move-background {
-  from {
-    -webkit-transform: translate3d(0px, 0px, 0px);
-  }
-  to {
-    -webkit-transform: translate3d(1000px, 0px, 0px);
-  }
-}
-@-moz-keyframes move-background {
-  from {
-    -webkit-transform: translate3d(0px, 0px, 0px);
-  }
-  to {
-    -webkit-transform: translate3d(1000px, 0px, 0px);
-  }
-}
-@-webkit-keyframes move-background {
-  from {
-    -webkit-transform: translate3d(0px, 0px, 0px);
-  }
-  to {
-    -webkit-transform: translate3d(1000px, 0px, 0px);
-  }
-}
-.background-container {
-  position: fixed;
-  top: 0;
-  left: 0;
-  bottom: 0;
-  right: 0;
-}
+<html class="" lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Twinkling Stars</title>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.min.css"
+    />
+    <style>
+      .background-container {
+        position: fixed;
+        top: 0;
+        left: 0;
+        bottom: 0;
+        right: 0;
+        perspective: calc(100vh * 0.5);
+      }
+    </style>
+    <style>
+      @keyframes move-background {
+        from {
+          transform: translate(0px, 0px);
+        }
+        to {
+          transform: translate(100vw, 0px);
+        }
+      }
 
-.stars {
-  background: black url(stars.png) repeat;
-  position: absolute;
-  top: 0;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  display: block;
-  z-index: 0;
-}
+      .stars {
+        width: 100vw;
+        height: 100vh;
+        background: black url(stars.png) repeat;
+        position: absolute;
+        right: 0;
+        top: 0;
+        display: block;
+        z-index: -1;
+      }
 
-.twinkling {
-  width: 10000px;
-  height: 100%;
-  background: transparent url(twinkling.png) repeat;
-  background-size: 1000px 1000px;
-  position: absolute;
-  right: 0;
-  top: 0;
-  bottom: 0;
-  z-index: 2;
-  -moz-animation: move-background 70s linear infinite;
-  -ms-animation: move-background 70s linear infinite;
-  -o-animation: move-background 70s linear infinite;
-  -webkit-animation: move-background 70s linear infinite;
-  animation: move-background 70s linear infinite;
-}
+      .twinkling {
+        width: calc(100vw * 2);
+        height: 100vh;
+        background: transparent url(twinkling.png) repeat;
+        background-size: 100vw 100vh;
+        position: absolute;
+        right: 0;
+        top: 0;
+        animation: move-background 120s linear infinite;
+      }
+    </style>
+    <style>
+      @keyframes move-galactica {
+        10% {
+          transform: rotate(-45deg);
+        }
+        40% {
+          transform: rotate(-4.5deg) translate(calc(100vw * 0.4), calc(100vh * -0.45));
+        }
+        50% {
+          transform: translate(calc(100vw * 0.5), calc(100vh * -0.5));
+        }
+        75% {
+          transform: translate(calc(100vw * 0.75), calc(100vh * -0.5));
+        }
+        100% {
+          transform: translate3d(calc(100vw * 1.6), calc(100vh * -0.5), calc(100vh * -0.5));
+        }
+      }
 
-  </style>
-</head>
-<body>
-<div class="background-container">
-
-<div class="stars"></div>
-<div class="twinkling"></div>
-
-</div></body></html>
+      .galactica {
+        background: transparent url(BattlestarGalactica/Battlestar.png);
+        background-position: center;
+        background-size: contain;
+        background-repeat: no-repeat;
+        height: 100px;
+        width: 100px;
+        position: absolute;
+        left: -100px;
+        bottom: -100px;
+        animation: move-galactica 1800s linear infinite;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="background-container">
+      <div class="stars"></div>
+      <div class="twinkling"></div>
+      <div class="galactica"></div>
+    </div>
+  </body>
+</html>
