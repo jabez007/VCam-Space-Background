@@ -49,52 +49,73 @@
       }
     </style>
     <style>
-      @keyframes move-galactica {
-        0% {
-          transform: rotate(-45deg);
-        }
-        10% {
-          transform: translate(0, 0) rotate(-36deg);
-        }
-        20% {
-          transform: translate(calc(100vw * 0.125), calc(100vh * -0.1)) rotate(-27deg);
-        }
-        30% {
-          transform: translate(calc(100vw * 0.25), calc(100vh * -0.2)) rotate(-9deg);
-        }
-        40% {
-          transform: translate(calc(100vw * 0.375), calc(100vh * -0.3)) rotate(9deg);
-        }
-        50% {
-          transform: translate(calc(100vw * 0.5), calc(100vh * -0.4)) rotate(4.5deg);
-        }
-        75% {
-          transform: translate(calc(100vw * 0.75), calc(100vh * -0.5));
-        }
-        100% {
-          transform: translate3d(calc(100vw * 1.6), calc(100vh * -0.5), calc(100vh * -0.5));
-        }
-      }
-
       .galactica {
+        --galactica-duration: calc(180s * 2);
+        height: 100px;
+        width: 100px;
         background: transparent url(BattlestarGalactica/Battlestar.png);
         background-position: center;
         background-size: contain;
         background-repeat: no-repeat;
-        height: 100px;
-        width: 100px;
         position: absolute;
+      }
+
+      @keyframes move-galactica {
+        0% {
+          transform: rotate(var(--galactica-rotation));
+        }
+        50% {
+          transform: translate(0, 0) rotate(calc(var(--galactica-rotation) * 0.8));
+        }
+        55% {
+          transform: translate(calc(100vw * 0.125), calc(100vh * (var(--galactica-y-direction) * 0.1))) rotate(calc(var(--galactica-rotation) * 0.6));
+        }
+        60% {
+          transform: translate(calc(100vw * 0.25), calc(100vh * (var(--galactica-y-direction) * 0.2))) rotate(calc(var(--galactica-rotation) * 0.2));
+        }
+        65% {
+          transform: translate(calc(100vw * 0.375), calc(100vh * (var(--galactica-y-direction) * 0.3))) rotate(calc(var(--galactica-rotation) * -0.2));
+        }
+        70% {
+          animation-timing-function: ease-out;
+          transform: translate(calc(100vw * 0.5), calc(100vh * (var(--galactica-y-direction) * 0.4))) rotate(calc(var(--galactica-rotation) * -0.1));
+        }
+        85% {
+          transform: translate(calc(100vw * 0.75), calc(100vh * (var(--galactica-y-direction) * 0.5)));
+        }
+        100% {
+          transform: translate3d(calc(100vw * 1.6), calc(100vh * (var(--galactica-y-direction) * 0.5)), calc(100vh * -0.5));
+        }
+      }
+
+      .galactica.left-bottom {
+        --galactica-rotation: -45deg;
+        --galactica-y-direction: -1;
+        --galactica-x-direction: 1;
         left: -100px;
         bottom: -100px;
-        animation: move-galactica 180s linear infinite;
+        animation: move-galactica var(--galactica-duration) linear infinite;
+      }
+
+      .galactica.left-top {
+        --galactica-rotation: 45deg;
+        --galactica-y-direction: 1;
+        --galactica-x-direction: 1;
+        left: -100px;
+        top: -100px;
+        animation: move-galactica var(--galactica-duration) calc(var(--galactica-duration) * 0.5) linear infinite;
       }
     </style>
+    <script>
+
+    </script>
   </head>
   <body>
     <div class="background-container">
       <div class="stars"></div>
       <div class="twinkling"></div>
-      <div class="galactica"></div>
+      <div class="galactica left-bottom"></div>
+      <div class="galactica left-top"></div>
     </div>
   </body>
 </html>
