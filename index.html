@@ -50,14 +50,23 @@
     </style>
     <style>
       @keyframes move-galactica {
-        10% {
+        0% {
           transform: rotate(-45deg);
         }
+        10% {
+          transform: translate(0, 0) rotate(-36deg);
+        }
+        20% {
+          transform: translate(calc(100vw * 0.125), calc(100vh * -0.1)) rotate(-27deg);
+        }
+        30% {
+          transform: translate(calc(100vw * 0.25), calc(100vh * -0.2)) rotate(-9deg);
+        }
         40% {
-          transform: rotate(-4.5deg) translate(calc(100vw * 0.4), calc(100vh * -0.45));
+          transform: translate(calc(100vw * 0.375), calc(100vh * -0.3)) rotate(9deg);
         }
         50% {
-          transform: translate(calc(100vw * 0.5), calc(100vh * -0.5));
+          transform: translate(calc(100vw * 0.5), calc(100vh * -0.4)) rotate(4.5deg);
         }
         75% {
           transform: translate(calc(100vw * 0.75), calc(100vh * -0.5));
@@ -77,7 +86,7 @@
         position: absolute;
         left: -100px;
         bottom: -100px;
-        animation: move-galactica 1800s linear infinite;
+        animation: move-galactica 180s linear infinite;
       }
     </style>
   </head>
